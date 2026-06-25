@@ -23,7 +23,46 @@ private String birthday;
 			this.birthday = birthday;
 			
 		}
-	
+		public void setContactId(String contactId){
+		this.contactId = contactId;	
+		}
+		public void setName(String name){
+		this.name = name;	
+		}
+		public void setPhoneNumber(String pNO){
+			this.phoneNumber = pNO;
+		}
+		public void setSalary(double salary){
+			this.salary = salary;
+		}
+		public void setCompanyName(String companyName){
+			this.companyName = companyName;
+		}
+		public void setBirthDay(String dob){
+			this.birthday = dob;
+		
+		public String getContactId(){
+		return this.contactId;	
+		}
+		public String getname(){{
+		return this.name;	
+		}
+		public String getPhoneNumber(){
+		return this.phoneNumber;	
+		}
+		public double getSalary(){
+		return this.salary;
+	}
+	public String getCompanyName(){
+		return this.companyName;
+	}
+	public String getBirthday(){
+		return this.birthday;
+	}
+		
+	public String toString(){
+		return contactId+"\t"+name+"\t"+phoneNumber+"\t"+salary+"\t"+companyName+"\t"+birthday;
+	}
 
 }
 class iFRIENDContact{
