@@ -66,6 +66,27 @@ private String birthday;
 
 }
 class iFRIENDContact{
+	public stativ Contacts[] contacts = new Contacts[0];
+	
+	public final static void clearConsole(){
+		try {   
+			final String os = System.getProperty("os.name");
+			if (os.contains("Windows")) {
+				new ProcessBuilder("cmd", "/c","cls").inheritIO().start().waitFor();
+			}else {
+				System.out.print("\033[H\033[2J");
+				System.out.flush();
+			}
+		}catch (final Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static  String genarateContactID(int ID){
+		String contact_ID=String.format("C%04d",ID);
+		
+		return contact_ID;
+	}
 	
 	public static void main(String args[]){
 		
