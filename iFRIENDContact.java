@@ -40,17 +40,17 @@ private String birthday;
 		}
 		public void setBirthDay(String dob){
 			this.birthday = dob;
-		
+		}
 		public String getContactId(){
-		return this.contactId;	
-		}
-		public String getname(){{
-		return this.name;	
-		}
-		public String getPhoneNumber(){
-		return this.phoneNumber;	
-		}
-		public double getSalary(){
+		return this.contactId;
+	}
+	public String getName(){
+		return this.name;
+	}
+	public String getPhoneNumber(){
+		return this.phoneNumber;
+	}
+	public double getSalary(){
 		return this.salary;
 	}
 	public String getCompanyName(){
@@ -83,7 +83,7 @@ class iFRIENDContact{
 	}
 	
 	public static String generateContactID(int ID){
-		String contact_ID = String.Format("C%04d",ID);
+		String contact_ID = String.format("C%04d",ID);
 	return contact_ID;	
 	}
 	
@@ -102,6 +102,26 @@ class iFRIENDContact{
 		return false;
 	}
 
+
+public static boolean checkBirthDay(String bDay){
+		try{
+			LocalDate birthday=LocalDate.parse(bDay);
+			LocalDate currentDate=LocalDate.now();
+			
+			int birthYear=birthday.getYear();
+			int currentYear=currentDate.getYear();
+			
+			if(birthYear < 1900 || birthYear > currentYear){
+				return false;
+			}
+			
+			return true;
+			
+		}catch(DateTimeParseException e){
+			return false;
+		}
+			
+	}
 	
 	public static void addContacts(){
 			Scanner input=new Scanner(System.in);
@@ -132,10 +152,10 @@ class iFRIENDContact{
 					System.out.println();
 					
 					System.out.print("Do you want to add phone number again (Y/N): ");
-					char subADD = input.nextchartAt(0);
+					char subADD = input.next().charAt(0);
 					System.out.println();
 
-					subADD = Character.toLowerCase(subAdd);
+					subADD = Character.toLowerCase(subADD);
 					
 					if(subADD == 'y'){
 						System.out.print("\033[6A");
@@ -150,6 +170,7 @@ class iFRIENDContact{
 						p_NO="";
 						break L1;
 					}
+				}
 										
 					}while (!checkPhoneNumber(p_NO));
 					
@@ -188,23 +209,46 @@ class iFRIENDContact{
 								
 					}while(!checkSalary(Salary));
 					
+					System.out.print("B'Day(YYYY-MM-DD) : ");
+			String bDay=input.next();
+			
+		//////////CHECK BIRTHDAY//////////
+		L3:	do{
+				if(checkBirthDay(bDay)){
+					break L3;
+				}else{
+					System.out.println();
+					System.out.println("\tInvalid Birthday...");
+					System.out.println();
 					
+					System.out.print("Do you want to input birthday again (Y/N): ");
+					char subBDay=input.next().charAt(0);
+					subBDay=Character.toLowerCase(subBDay);
 					
-					
-					
-					
-					
-					
-					
-					
+					if(subBDay=='y'){
+						System.out.print("\033[5A");
+						System.out.print("\033[0J");
+						
+						System.out.print("B'Day(YYYY-MM-DD) : ");
+						bDay=input.next();
+					}else{
+						System.out.print("\033[5A");
+						System.out.print("\033[0J");
+						System.out.print("B'Day(YYYY-MM-DD) : Not insert");
+						bDay="";
+						break L3;
 					}
-				
-			}
+				}
 					
-
+			}while(!checkBirthDay(bDay));
 		
-		
+					
+			
+					
+				
+			}	
 	}
+
 	
 	
 	public static void main(String args[]){
@@ -250,16 +294,16 @@ class iFRIENDContact{
 				addContacts();
 			}break;
 			case 2:{
-				updateContact();
+				//updateContact();
 			}break;
 			case 3: {
-				deleteContact();
+				//deleteContact();
 			}break;
 			case 4:{
-				searchContacts();
+				//searchContacts();
 			}break;
 			case 5:{
-				listContact();
+				//listContact();
 			}break;
 			case 6: System.exit(0);break;
 		}
