@@ -87,6 +87,14 @@ class iFRIENDContact{
 	return contact_ID;	
 	}
 	
+	public static boolean checkPhoneNumber(String p_No){
+		
+	if(p_No.length() == 10 && p_No.charAt(0) == '0'){
+	return true;	
+	}	
+	return false
+	}
+	
 	
 	public static void addContacts(){
 			Scanner input=new Scanner(System.in);
@@ -103,7 +111,64 @@ class iFRIENDContact{
 				System.out.println("=======");
 				System.out.println();
 				
+				System.out.print("Name              : ");
+				String name=input.next();
+
+				System.out.print("Phone Number      : ");
+				String p_NO=input.next();
 				
+				L1: do{
+					if(!checkPhoneNumber(p_NO)){
+
+					System.out.println();
+					System.out.println("\tInvalid phone number...");
+					System.out.println();
+					
+					System.out.print("Do you want to add phone number again (Y/N): ");
+					char subADD = input.nextchartAt(0);
+					System.out.println();
+
+					subADD = Character.toLowerCase(subAdd);
+					
+					if(subADD == 'y'){
+						System.out.print("\033[6A");
+						System.out.print("\033[0J");
+						
+						System.out.print("Phone Number      : ");
+						p_NO=input.next();	
+						}else{
+						System.out.print("\033[6A");
+						System.out.print("\033[0J");
+						System.out.println("Phone Number      : Not insert...");
+						p_NO="";
+						break L1;
+					}
+										
+					}while (!checkPhoneNumber(p_NO));
+					
+					System.out.print("Company Name      : ");
+					String company_Name=input.next();
+						
+					System.out.print("Salary            : ");
+					double Salary=input.nextDouble();
+					
+					L2: do{
+								
+						
+						
+						
+								}
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					}
 				
 			}
 					
