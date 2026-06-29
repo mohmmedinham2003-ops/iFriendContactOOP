@@ -82,11 +82,36 @@ class iFRIENDContact{
 		}
 	}
 	
-	public static  String genarateContactID(int ID){
-		String contact_ID=String.format("C%04d",ID);
-		
-		return contact_ID;
+	public static String generateContactID(int ID){
+		String contact_ID = String.Format("C%04d",ID);
+	return contact_ID;	
 	}
+	
+	
+	public static void addContacts(){
+			Scanner input=new Scanner(System.in);
+			int contact_ID = 1;
+			
+			do{
+				System.out.println("+-----------------------------------------------+");
+				System.out.println("|\t   Add Contact to the list  \t\t|");
+				System.out.println("+-----------------------------------------------+");
+				System.out.println('\n');
+				
+				String ID = generateContactID(contact_ID);
+				System.out.println(ID);
+				System.out.println("=======");
+				System.out.println();
+				
+				
+				
+			}
+					
+
+		
+		
+	}
+	
 	
 	public static void main(String args[]){
 		
