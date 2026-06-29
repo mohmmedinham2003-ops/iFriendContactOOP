@@ -66,7 +66,7 @@ private String birthday;
 
 }
 class iFRIENDContact{
-	public stativ Contacts[] contacts = new Contacts[0];
+	public static Contacts[] contacts = new Contacts[0];
 	
 	public final static void clearConsole(){
 		try {   
@@ -92,9 +92,16 @@ class iFRIENDContact{
 	if(p_No.length() == 10 && p_No.charAt(0) == '0'){
 	return true;	
 	}	
-	return false
+	return false;
 	}
 	
+	public static boolean checkSalary(double salary){
+		if(salary > 0){
+		return true;
+		}
+		return false;
+	}
+
 	
 	public static void addContacts(){
 			Scanner input=new Scanner(System.in);
@@ -153,11 +160,33 @@ class iFRIENDContact{
 					double Salary=input.nextDouble();
 					
 					L2: do{
+							if(!checkSalary(Salary)){
+							System.out.println();
+							System.out.println("\tInvalid Input...");
+							System.out.println();	
+							
+							System.out.print("Do you want to add salary again (Y/N): ");
+							char subSalary = input.next().charAt(0);
+							subSalary = Character.toLowerCase(subSalary);		
+							
+							if(subSalary=='y'){
+						System.out.print("\033[5A");
+						System.out.print("\033[0J");
+						
+						System.out.print("Salary            : ");
+						Salary=input.nextDouble();
+					}else{
+						System.out.print("\033[5A");
+						System.out.print("\033[0J");
+						System.out.println("Salary            : Not insert...");
+						Salary=0;
+						break L2;
+					}
+							
 								
-						
-						
-						
-								}
+					}
+								
+					}while(!checkSalary(Salary));
 					
 					
 					
