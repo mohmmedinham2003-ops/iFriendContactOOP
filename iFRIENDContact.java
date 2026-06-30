@@ -451,6 +451,44 @@ public static boolean checkBirthDay(String bDay){
 			
 	}
 
+	public static void updateContacts(){
+		Scanner input=new Scanner(System.in);
+		
+		do{
+			System.out.println("+-----------------------------------------------+");
+			System.out.println("|\t\t UPDATE Contact \t\t|");
+			System.out.println("+-----------------------------------------------+");
+			System.out.println('\n');
+		
+			System.out.print("Search Contact by  Name or Phone Number - ");
+			String search=input.next();
+			System.out.println('\n');
+			
+			int index=searchContacts(search);
+		//	int temp=searchContacts(search);
+
+			displayContact(index);
+			
+			try{Thread.sleep(500);}catch(Exception e){}
+			
+			if(index==-1){
+				System.out.println("\tNo results found...");
+				System.out.println('\n');
+				
+				try{Thread.sleep(800);}catch(Exception e){}
+				
+				System.out.print("Do you want to search contact again(Y/N): ");
+				char subUpdate=input.next().charAt(0);
+				subUpdate=Character.toLowerCase(subUpdate);
+				if(subUpdate=='y'){
+					clearConsole();
+					continue;
+				}else{
+					clearConsole();
+					main(null);
+				}
+			}
+
 	public static void main(String args[]){
 		
 		Scanner input = new Scanner(System.in);
