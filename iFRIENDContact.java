@@ -291,8 +291,8 @@ public static boolean checkBirthDay(String bDay){
 
 	}
 	
-	public static int displayContact(int index){
-		if(index != -1){
+	public static void displayContact(int i){
+		if(i != -1){
 			System.out.println("\tContact ID        : "+contacts[i].getContactId());
 			System.out.println("\tName              : "+contacts[i].getName());
 			System.out.println("\tPhone Number      : "+contacts[i].getPhoneNumber());
@@ -364,6 +364,80 @@ public static boolean checkBirthDay(String bDay){
 
 }
 	
+	public static void deleteContacts(){
+		Scanner input=new Scanner(System.in);
+		
+	L6:	do{
+			System.out.println("+-----------------------------------------------+");
+			System.out.println("|\t\t DELETE Contact \t\t|");
+			System.out.println("+-----------------------------------------------+");
+			System.out.println('\n');
+	
+			System.out.print("Search Contact by  Name or Phone Number - ");
+			String search=input.next();
+			System.out.println('\n');
+			
+			int index=searchContacts(search);
+
+			displayContact(index);
+	//		System.out.println('\n');
+			
+			if(index==-1){
+				System.out.println("\t No results found...");
+				System.out.println('\n');
+				
+				try{Thread.sleep(500);}catch(Exception e){}
+				
+				System.out.print("Do you want to search contact again (Y/N): ");
+				char subUpdate=input.next().charAt(0);
+				subUpdate=Character.toLowerCase(subUpdate);
+				if(subUpdate=='y'){
+					clearConsole();
+					continue;
+				}else {
+					clearConsole();			
+					main(null);
+				}
+			}
+			
+			System.out.println('\n');
+			System.out.print("Do you want to delete this Contact (Y/N): ");
+			char subDelete=input.next().charAt(0);
+			subDelete=Character.toLowerCase(subDelete);
+			System.out.println();
+			
+			if(subDelete=='y'){
+				reduceArrays(index);
+				
+				try{Thread.sleep(100);}catch(Exception e){}
+				
+				System.out.println("\tContact has been deleted successfuly...");
+				System.out.println('\n');
+				
+				try{Thread.sleep(200);}catch(Exception e){}
+				
+			}else {
+				System.out.println("\tNot deleted...");
+				System.out.println('\n');
+				
+				try{Thread.sleep(200);}catch(Exception e){}
+			}
+			
+			System.out.print("Do you want to delete another Contact(Y/N): ");	
+			char optionDelete=input.next().charAt(0);
+			System.out.println();
+			optionDelete=Character.toLowerCase(optionDelete);
+			if(optionDelete=='y'){
+				clearConsole();
+				continue;
+			}else{
+				clearConsole();
+				main(null);
+				break L6;
+			}		
+			
+		}while(true);	
+	}
 	public static void main(String args[]){
 		
 		Scanner input = new Scanner(System.in);
@@ -410,10 +484,10 @@ public static boolean checkBirthDay(String bDay){
 				//updateContact();
 			}break;
 			case 3: {
-				//deleteContact();
+				deleteContact();
 			}break;
 			case 4:{
-				//searchContacts();
+				searchContacts();
 			}break;
 			case 5:{
 				//listContact();
