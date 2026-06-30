@@ -641,7 +641,7 @@ public static boolean checkBirthDay(String bDay){
 		Scanner input=new Scanner(System.in);
 		for(int j = contacts.length-1;j>0;j--){
 			for(int i = 0;i < j;i++){
-			if(contacts[i].getName().charAt(0) > contacts[i+1].getName().charAt(0){
+			if(contacts[i].getName().charAt(0) > contacts[i+1].getName().charAt(0)){
 			Contacts temp = contacts[i];
 			contacts[i] = contacts[i+1];
 			contacts[i+1] = temp;	
@@ -665,6 +665,61 @@ public static boolean checkBirthDay(String bDay){
 		
 	}	
 	
+	public static void sortSalary(){
+		Scanner input=new Scanner(System.in);
+		for(int j = contacts.length-1; j>0; j--){
+				for(int i = 0;i<j;i++){
+				if(contacts[i].getSalary() > contacts[i+1].getSalary()){
+				Contacts temp = contacts[i];
+				contacts[i] = contacts[i+1];
+				contacts[i+1] = temp;	
+					
+				}	
+					
+				}
+			
+		}
+		
+	System.out.println("+--------------------------------------------------------------------------------------------+");
+		System.out.printf("| %-13s | %-12s | %-15s | %-11s | %-8s  | %-15s |%n","Contact ID","Name","Phone Number","Company","Salary","Birthday");
+		System.out.println("+--------------------------------------------------------------------------------------------+");
+		
+		for (int i = 0; i < contacts.length; i++){
+			System.out.printf("| %-13s | %-12s | %-15s | %-11s | %-8s  | %-15s |%n",contacts[i].getContactId(), contacts[i].getName(), contacts[i].getPhoneNumber(), contacts[i].getCompanyName(), contacts[i].getSalary(), contacts[i].getBirthday() );
+		}
+		
+		System.out.println("+--------------------------------------------------------------------------------------------+");
+		
+		System.out.println('\n');
+		System.out.print("Do you want to go Home Page (Y/N): ");
+		char main=input.next().charAt(0);
+		main=Character.toLowerCase(main);
+		
+		if(main=='y'){
+			clearConsole();
+			main(null);
+		}else{
+			clearConsole();
+			sortContacts();
+		}
+		
+	}	
+	
+	public static void sortBirthDay(){
+		Scanner input=new Scanner(System.in);
+			for (int i = contacts.length -1; i > 0 ; i--){
+				for (int j = 0; j < i; j++){
+		if(LocalDate.parse(contacts[j].getBirthday()).isAfter(LocalDate.parse(contacts[j+1].getBirthday()))){ // 25 000 > 12 000
+					Contacts temp = contacts[j];
+					contacts[j] = contacts[j+1];
+					contacts[j+1] = temp;
+					
+				}
+			}
+		}
+		
+		
+	}
 	
 	
 	public static void sortContacts(){
