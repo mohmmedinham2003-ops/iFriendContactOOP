@@ -450,7 +450,7 @@ public static boolean checkBirthDay(String bDay){
 		contacts = tempContacts;
 			
 	}
-
+	
 	public static void updateContacts(){
 		Scanner input=new Scanner(System.in);
 		
@@ -531,7 +531,7 @@ public static boolean checkBirthDay(String bDay){
 				String p_NO=input.next();
 					//////////CHECK PHONE NUMBER IN UPDATE//////////
 			L4 :do{
-					if(checkPhoneNumber(p_NO)){
+					if(!checkPhoneNumber(p_NO)){
 					System.out.println('\n');
 					System.out.println("\tInvalid phone number...");
 					System.out.println('\n');
@@ -554,9 +554,9 @@ public static boolean checkBirthDay(String bDay){
 						break L4;
 					}
 					}
-				}while(checkPhoneNumber(p_NO));
+				}while(!checkPhoneNumber(p_NO));
 				
-				if(!checkPhoneNumber(p_NO)){
+				if(checkPhoneNumber(p_NO)){
 					contacts[index].setPhoneNumber(p_NO);
 				}else{
 				//	contacts[index].getPhoneNumber()=contacts[index].getPhoneNumber();
@@ -591,7 +591,7 @@ public static boolean checkBirthDay(String bDay){
 				double Salary=input.nextDouble();
 					//////////CHECK SALARY IN UPDATE//////////
 			L5:	do{
-					if(checkSalary(Salary)){
+					if(!checkSalary(Salary)){
 						System.out.println();
 						System.out.println("\tInvalid Salary...");
 						System.out.println();
@@ -612,7 +612,7 @@ public static boolean checkBirthDay(String bDay){
 							break L5;
 						}
 					}
-				}while(checkSalary(Salary));	
+				}while(!checkSalary(Salary));	
 				
 				contacts[index].setSalary(Salary);
 				System.out.println('\n');
@@ -636,7 +636,72 @@ public static boolean checkBirthDay(String bDay){
 			}
 		}while(true);
 	}
+		
+	public static void sortName(){
+		Scanner input=new Scanner(System.in);
+		for(int j = contacts.length-1;j>0;j--){
+			for(int i = 0;i < j;i++){
+			if(contacts[i].getName().charAt(0) > contacts[i+1].getName().charAt(0){
+			Contacts temp = contacts[i];
+			contacts[i] = contacts[i+1];
+			contacts[i+1] = temp;	
+				
+			}	
+				
+			}
+			
+		}
+		
+		System.out.println("+--------------------------------------------------------------------------------------------+");
+		System.out.printf("| %-13s | %-12s | %-15s | %-11s | %-8s  | %-15s |%n","Contact ID","Name","Phone Number","Company","Salary","Birthday");
+		System.out.println("+--------------------------------------------------------------------------------------------+");
+		
+		for(int i = 0;i<contacts.length;i++){
+		System.out.printf("| %-13s | %-12s | %-15s | %-11s | %-8f  | %-15s | \n",contacts[i].getContactId(),contacts[i].getName(),contacts[i].getPhoneNumber(),contacts[i].getCompanyName(),contacts[i].getSalary(),contacts[i].getBirthday());
+			
+		}
+			System.out.println("+--------------------------------------------------------------------------------------------+");
 
+		
+	}	
+	
+	
+	
+	public static void sortContacts(){
+		Scanner input=new Scanner(System.in);
+		
+		System.out.println("+------------------------------------+");
+		System.out.println("|            SORT Contact            |");
+		System.out.println("+------------------------------------+");
+		System.out.println('\n');
+		
+		System.out.println("	[1] Sorting by Name\n");
+		System.out.println("	[2] Sorting by Slary\n");
+		System.out.println("	[3] Sorting by Birthday\n");
+		System.out.println();
+		
+		System.out.print("Enter an option to continue -> ");
+		int  optionSort=input.nextInt();
+		System.out.println();
+		
+		switch (optionSort){
+			case 1 :sortName();break;
+			case 2 :sortSalary();break;
+			case 3 :sortBirthDay();break;
+			default:
+			System.out.println("\tInvalid Input...");
+			try{Thread.sleep(200);}catch(Exception e){}
+			clearConsole();
+			main(null);
+			break;
+		}
+			
+	}
+	
+	public static void exit(){
+		System.exit(0);
+	}	
+			
 	public static void main(String args[]){
 		
 		Scanner input = new Scanner(System.in);
