@@ -717,9 +717,31 @@ public static boolean checkBirthDay(String bDay){
 				}
 			}
 		}
+	System.out.println("+--------------------------------------------------------------------------------------------+");
+		System.out.printf("| %-13s | %-12s | %-15s | %-11s | %-8s  | %-15s |%n","Contact ID","Name","Phone Number","Company","Salary","Birthday");
+		System.out.println("+--------------------------------------------------------------------------------------------+");
 		
+		for (int i = 0; i < contacts.length; i++){
+			System.out.printf("| %-13s | %-12s | %-15s | %-11s | %-8s  | %-15s |%n",contacts[i].getContactId(), contacts[i].getName(), contacts[i].getPhoneNumber(), contacts[i].getCompanyName(), contacts[i].getSalary(), contacts[i].getBirthday());
+		}
 		
-	}
+System.out.println("+--------------------------------------------------------------------------------------------+");
+		
+		System.out.println('\n');
+		System.out.print("Do you want to go Home Page (Y/N): ");
+		char main=input.next().charAt(0);
+		main=Character.toLowerCase(main);
+		
+		if(main=='y'){
+			clearConsole();
+			main(null);
+		}else{
+			clearConsole();
+			sortContacts();
+		}		
+		
+	}	
+	
 	
 	
 	public static void sortContacts(){
