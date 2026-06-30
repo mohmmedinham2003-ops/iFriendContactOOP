@@ -279,8 +279,90 @@ public static boolean checkBirthDay(String bDay){
 			}while(true);
 	}
 
+	public static int searchContacts(String search){
+	for(int i = 0;i < contacts.length;i++){
+	if(search.equals(contacts[i].getName())|| search.equals(contacts[i].getPhoneNumber())){
+	return i;	
+		
+	}
+
+	}	
+		return -1;
+
+	}
+	
+	public static int displayContact(int index){
+		if(index != -1){
+			System.out.println("\tContact ID        : "+contacts[i].getContactId());
+			System.out.println("\tName              : "+contacts[i].getName());
+			System.out.println("\tPhone Number      : "+contacts[i].getPhoneNumber());
+			System.out.println("\tCompany Name      : "+contacts[i].getCompanyName());
+			System.out.println("\tSalary            : "+contacts[i].getSalary());
+			System.out.println("\tB,Day(YYYY-MM-DD) : "+contacts[i].getBirthday());			
+		}
+		
+	}
 
 	
+	public static void searchContacts(){
+			Scanner input=new Scanner(System.in);
+
+		do{		
+			System.out.println("+-----------------------------------------------+");
+			System.out.println("|\t\t SEARCH Contact \t\t|");
+			System.out.println("+-----------------------------------------------+");
+			System.out.println('\n');
+			
+			System.out.print("Search Contact by Name or Phone Number - ");
+			String search  = input.next();
+			System.out.println();
+		
+		
+			int index = searchContacts(search);
+			
+		if(index == -1){
+				System.out.println("\tNo contact found for "+search);
+				System.out.println('\n');
+				
+				try{Thread.sleep(600);}catch(Exception e){}
+				
+				System.out.print("Do you want to try a new search (Y/N): ");
+				char subSearch=input.next().charAt(0);
+				subSearch=Character.toLowerCase(subSearch);
+				
+				if(subSearch=='y'){
+					System.out.print("\033[6A");
+					System.out.print("\033[0J");
+					clearConsole();
+					continue;
+					
+				}else{
+					clearConsole();
+					main(null);
+					break;
+				}
+			}else{
+			displayContact(index);	
+			try{Thread.sleep(600);}catch(Exception e){}
+	
+			}
+		System.out.println('\n');
+			System.out.print("Do you want to search another contact(Y/N): " );
+			char optionSearch=input.next().charAt(0);
+			optionSearch=Character.toLowerCase(optionSearch);
+			System.out.println('\n');
+			
+			if(optionSearch=='y'){
+				clearConsole();
+				continue;
+			}else{
+				clearConsole();
+				main(null);
+				break;
+			}
+		}while(true);
+
+}
 	
 	public static void main(String args[]){
 		
