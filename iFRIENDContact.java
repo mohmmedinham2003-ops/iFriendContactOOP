@@ -123,6 +123,19 @@ public static boolean checkBirthDay(String bDay){
 			
 	}
 	
+	public static void extendArrays(String ID,String Name,String p_NO,String company_Name,double Salary,String bDay){
+	Contacts[] tempContacts = new Contacts[contacts.length +1];
+	
+	for(int i =0;i < contacts.length;i++){
+	tempContacts[i] = contacts[i];	
+	}
+		contacts = tempContacts;
+		
+		contacts[contacts.length-1] = new Contacts(ID, Name, p_NO, Salary, company_Name, bDay);
+		
+		
+	}
+	
 	public static void addContacts(){
 			Scanner input=new Scanner(System.in);
 			int contact_ID = 1;
@@ -240,14 +253,32 @@ public static boolean checkBirthDay(String bDay){
 					}
 				}
 					
-			}while(!checkBirthDay(bDay));
-		
-					
+			}while(!checkBirthDay(bDay));	
 			
-					
+			extendArrays(ID,name,p_NO,company_Name,Salary,bDay);	
+			contact_ID++;
+			
+			System.out.println();
+			System.out.println("\tContact has been added successfully...");
+			System.out.println('\n');
+			System.out.print("Do you want add another contact: ");
+			char optionADD = input.next().charAt(0);
+			optionADD = Character.toLowerCase(optionADD);
+			System.out.println('\n');
+			
+			if(optionADD == 'y'){
+			clearConsole();
+			continue;	
 				
-			}	
+			}else{
+			clearConsole();
+			main(null);
+			}
+			
+				
+			}while(true);
 	}
+
 
 	
 	
