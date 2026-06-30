@@ -364,7 +364,7 @@ public static boolean checkBirthDay(String bDay){
 
 }
 	
-	public static void deleteContacts(){
+	public static void deleteContact(){
 		Scanner input=new Scanner(System.in);
 		
 	L6:	do{
@@ -436,20 +436,19 @@ public static boolean checkBirthDay(String bDay){
 				break L6;
 			}		
 			
-		}while(true);	
+		}while(true);
 	}
 	
 	public static void reduceArrays(int index){
-		Contacts[] temContacts = new Contacts[contacts.length-1];
-		 for(int i = index;i<contacts.length=1;i++){
+		Contacts[] tempContacts = new Contacts[contacts.length-1];
+		 for(int i = index;i<contacts.length-1;i++){
 		contacts[i] = contacts[i+1];	 
 		}
 		for(int j = 0;j < tempContacts.length;j++){
-		tempContacts[j] = contacts[j]	
+		tempContacts[j] = contacts[j];
 		}
 		contacts = tempContacts;
-		
-		
+			
 	}
 
 	public static void main(String args[]){
