@@ -438,6 +438,20 @@ public static boolean checkBirthDay(String bDay){
 			
 		}while(true);	
 	}
+	
+	public static void reduceArrays(int index){
+		Contacts[] temContacts = new Contacts[contacts.length-1];
+		 for(int i = index;i<contacts.length=1;i++){
+		contacts[i] = contacts[i+1];	 
+		}
+		for(int j = 0;j < tempContacts.length;j++){
+		tempContacts[j] = contacts[j]	
+		}
+		contacts = tempContacts;
+		
+		
+	}
+
 	public static void main(String args[]){
 		
 		Scanner input = new Scanner(System.in);
