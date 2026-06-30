@@ -488,6 +488,154 @@ public static boolean checkBirthDay(String bDay){
 					main(null);
 				}
 			}
+			
+			System.out.println('\n');
+			System.out.println("what do you want to update...");
+			System.out.println();
+			System.out.println("\t[01]Name");
+			System.out.println("\t[02]Phone Number");
+			System.out.println("\t[03]Company Name");
+			System.out.println("\t[04]Salary");
+			System.out.println('\n');
+			System.out.print("Enter an option to continue -> ");
+			int optionUpdate=input.nextInt();
+			System.out.println('\n');
+		
+			System.out.print("\033[11A");
+			System.out.print("\033[0J");
+			
+		switch (optionUpdate){
+				//////////UPDATE NAME//////////
+				case 1: 
+				System.out.println("Update Name");
+				System.out.println("============");
+				System.out.println();
+				
+				System.out.print("Input new name - ");
+				//String updateName = input.next();
+				//contacts.setName(updateName);
+				
+				contacts[index].setName(input.next());
+				System.out.println('\n');
+				
+				System.out.println("\tContact has been update succesfully...");
+				System.out.println('\n');
+				break;
+				//////////UPDATE PHONE NUMBER//////////
+				case 2: 
+				System.out.println("Update Phone Number");
+				System.out.println("====================");
+				System.out.println();
+				
+				System.out.print("Input new Phone Number - ");
+				String p_NO=input.next();
+					//////////CHECK PHONE NUMBER IN UPDATE//////////
+			L4 :do{
+					if(checkPhoneNumber(p_NO)){
+					System.out.println('\n');
+					System.out.println("\tInvalid phone number...");
+					System.out.println('\n');
+					
+					System.out.print("Do you want to add phone number again (Y/N): ");
+					char subUpdateP_NO=input.next().charAt(0);
+					subUpdateP_NO=Character.toLowerCase(subUpdateP_NO);
+					if(subUpdateP_NO=='y'){
+						System.out.print("\033[7A");
+						System.out.print("\033[0J");
+						
+						System.out.print("Input Phone Number - ");
+						p_NO=input.next();
+
+					}else{
+						System.out.print("\033[5A");
+						System.out.print("\033[0J");
+						System.out.println("Input Phone Number - not update...");
+						
+						break L4;
+					}
+					}
+				}while(checkPhoneNumber(p_NO));
+				
+				if(!checkPhoneNumber(p_NO)){
+					contacts[index].setPhoneNumber(p_NO);
+				}else{
+				//	contacts[index].getPhoneNumber()=contacts[index].getPhoneNumber();
+				}
+				
+				System.out.println('\n');
+				System.out.println("\tContact has been update succesfully...");
+				System.out.println('\n');
+				break;
+				
+				//////////UPDATE COMPANY NAME//////////
+				case 3: 
+				System.out.println("Update Company Name");
+				System.out.println("=====================");
+				System.out.println();
+				
+				System.out.print("Input new company name - ");
+				contacts[index].setCompanyName(input.next());
+				System.out.println('\n');
+				
+				System.out.println("\tContact has been update succesfully...");
+				System.out.println('\n');
+				break;
+				
+				//////////UPDATE SALARY//////////
+				case 4: 
+				System.out.println("Update Salary");
+				System.out.println("==============");
+				System.out.println();
+				
+				System.out.print("Input new salary - ");
+				double Salary=input.nextDouble();
+					//////////CHECK SALARY IN UPDATE//////////
+			L5:	do{
+					if(checkSalary(Salary)){
+						System.out.println();
+						System.out.println("\tInvalid Salary...");
+						System.out.println();
+						
+						System.out.print("Do you want to input Salary again (Y/N): ");
+						char subUpdateSalary=input.next().charAt(0);
+						subUpdateSalary=Character.toLowerCase(subUpdateSalary);
+						if(subUpdateSalary=='y'){
+							System.out.print("\033[5A");
+							System.out.print("\033[0J");
+							
+							System.out.print("Input new salary - ");
+							Salary=input.nextDouble();
+						}else{
+							System.out.print("\033[5A");
+							System.out.print("\033[0J");
+							System.out.println("Input Salary - not update...");
+							break L5;
+						}
+					}
+				}while(checkSalary(Salary));	
+				
+				contacts[index].setSalary(Salary);
+				System.out.println('\n');
+				
+				System.out.println("\tContact has been update succesfully...");
+				System.out.println('\n');
+				break;
+				
+				default:System.out.println("\tInvalid option...");
+			}
+			
+			System.out.print("Do you want to update another Contact (Y/N) : ");
+			char subUpdate=input.next().charAt(0);
+			if(subUpdate=='y'){
+				clearConsole();
+				continue;
+			}else{
+				clearConsole();
+				main(null);
+				return ;
+			}
+		}while(true);
+	}
 
 	public static void main(String args[]){
 		
